@@ -12,7 +12,7 @@ def main():
     theta_1 = 0
     exp = 2
     it = 1000
-    learning_rate = 1
+    learning_rate = 0.01
     print("Please enter a mileage:")
     mileage = input()
 
@@ -23,7 +23,7 @@ def main():
     nlhs = normalize(lhs)
     nrhs = normalize(rhs)
 
-    theta_1, theta_0 = train_model(lhs, rhs, it, 0.01)
+    theta_1, theta_0 = train_model(lhs, rhs, it, learning_rate)
     print("theta__0", theta_0)
     print("theta__1", theta_1)
 
