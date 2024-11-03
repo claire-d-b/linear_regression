@@ -1,7 +1,8 @@
 from pandas import DataFrame
 
 
-def get_affine_function(mileage: list, price: list, theta_0: float, theta_1: float, learning_rate: float) -> tuple:
+def get_affine_function(mileage: list, price: list, theta_0: float,
+                        theta_1: float, learning_rate: float) -> tuple:
     # y = w * x + b
     mse = 0.0
     m = len(mileage)
@@ -9,23 +10,28 @@ def get_affine_function(mileage: list, price: list, theta_0: float, theta_1: flo
 
     for mileage_unit, price_unit in zip(mileage, price):
 
-        b, w, se = minimize_cost(m, theta_0, theta_1, mileage_unit, price_unit, learning_rate)
+        b, w, se = minimize_cost(m, theta_0, theta_1, mileage_unit,
+                                 price_unit, learning_rate)
         theta_0 += b
         theta_1 += w
 
     mse += 1 / (2 * m) * se
     theta_0 /= len(mileage)
     theta_1 /= len(mileage)
-    
+
     return theta_0, theta_1, mse
 
 
-def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float, real_price: float, learning_rate: float) -> tuple:
+def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
+                  real_price: float, learning_rate: float) -> tuple:
     limit = float("inf")
     w = 0.0
     b = 0.0
 
-    for i in range(-100, 100, 1):
+    minimum = int(- 1 / learning_rate)
+    maximum = int(1 / learning_rate)
+
+    for i in range(minimum, maximum, 1):
         theta_1 = float(i / ((2 * m) / learning_rate))
 
         # real_price = theta_1 * real_mileage + theta_0
@@ -41,9 +47,10 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float, r
             w = theta_1
 
     return b, w, limit
- 
 
-def train_model(lhs: DataFrame, rhs: DataFrame, it: int, learning_rate: float) -> tuple:
+
+def train_model(lhs: DataFrame, rhs: DataFrame, it: int,
+                learning_rate: float) -> tuple:
     theta_0 = 0.0
     theta_1 = 0.0
     minimum = float("inf")
@@ -54,7 +61,9 @@ def train_model(lhs: DataFrame, rhs: DataFrame, it: int, learning_rate: float) -
     price = list(float(x) for x in rhs)
 
     for i in range(it):
-        theta_0, theta_1, mse = get_affine_function(mileage, price, theta_0, theta_1, learning_rate)
+        theta_0, theta_1, mse = get_affine_function(mileage, price,
+                                                    theta_0, theta_1,
+                                                    learning_rate)
 
         if mse < minimum:
             minimum = mse
@@ -62,5 +71,3 @@ def train_model(lhs: DataFrame, rhs: DataFrame, it: int, learning_rate: float) -
             b = theta_0
 
     return w, b
-
-

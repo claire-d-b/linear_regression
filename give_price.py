@@ -1,6 +1,4 @@
-from matplotlib.pyplot import savefig, tight_layout, show, subplots, ylim
 from pandas import DataFrame, read_csv
-from train_model import train_model
 
 
 def load(path: str) -> DataFrame:
@@ -46,31 +44,3 @@ def normalize_list(values: list) -> list:
         nvalues.insert(i, unit / max(values))
 
     return nvalues
-
-
-def create_figure(exp: int, lhs: DataFrame, rhs: DataFrame) -> tuple:
-    theta_0 = 0
-    theta_1 = 0
-    limit = float('inf')
-    fig, ax = subplots()
-
-    iterations = 100
-    theta_0, theta_1, mse = train_model(lhs, rhs, iterations)
-
-    return theta_0, theta_1, mse
-
-
-def display_points(fig: any, ax: any, frame_x: DataFrame, frame_y: DataFrame,
-                   b: float, coeff: float) -> None:
-
-    y_pred = []
-
-    for i, unit in enumerate(frame_x):
-        y_pred.append(coeff * unit + b)
-
-    ax.plot(normalize(frame_x), normalize_list(y_pred))
-    ax.scatter(normalize(frame_x), normalize(frame_y))
-
-    tight_layout()
-    savefig('output_normalized')
-    show()
