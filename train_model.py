@@ -3,6 +3,8 @@ from pandas import DataFrame
 
 def get_affine_function(mileage: list, price: list, theta_0: float,
                         theta_1: float, learning_rate: float) -> tuple:
+    """Take all values from x-axis and y-axis lists and calculate the
+    mean square error smallest value, and corresponding thetas"""
     # y = w * x + b
     mse = 0.0
     m = len(mileage)
@@ -24,6 +26,8 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
 
 def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
                   real_price: float, learning_rate: float) -> tuple:
+    """Test with a slope value between -1 and 1, update y-interceipt value,
+    and take the smallest square error"""
     limit = float("inf")
     w = 0.0
     b = 0.0
@@ -39,10 +43,10 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
         # -theta_0 = theta_1 * real_mileage - real_price
         # theta_0 = -(theta_1 * real_mileage - real_price)
         theta_0 = -theta_1 * real_mileage + real_price
-        mse = ((theta_1 * real_mileage + theta_0) - real_price) ** 2
-        if mse < limit:
+        se = ((theta_1 * real_mileage + theta_0) - real_price) ** 2
+        if se < limit:
 
-            limit = mse
+            limit = se
             b = theta_0
             w = theta_1
 
@@ -51,6 +55,8 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
 
 def train_model(lhs: DataFrame, rhs: DataFrame, it: int,
                 learning_rate: float) -> tuple:
+    """Take the smallest value of mean square error and
+    update thetas accordingly"""
     theta_0 = 0.0
     theta_1 = 0.0
     minimum = float("inf")
