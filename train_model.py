@@ -17,11 +17,12 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
         theta_0 += b
         theta_1 += w
 
-    mse += 1 / (2 * m) * se
+        mse += se
+    ret_mse = mse * 1 / (2 * m)
     theta_0 /= len(mileage)
     theta_1 /= len(mileage)
 
-    return theta_0, theta_1, mse
+    return theta_0, theta_1, ret_mse
 
 
 def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
