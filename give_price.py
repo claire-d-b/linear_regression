@@ -15,8 +15,8 @@ def load(path: str) -> DataFrame:
 
 
 def get_values(df: DataFrame, keyword: str) -> DataFrame:
-    """Search for two keyword in the entire DataFrame, then compare
-    the two keywords (countries) data"""
+    """Search for a keyword in the entire DataFrame and
+    returns associated values"""
     try:
         isinstance(df, DataFrame)
 
@@ -30,7 +30,8 @@ def get_values(df: DataFrame, keyword: str) -> DataFrame:
 
 
 def normalize(values: DataFrame) -> DataFrame:
-
+    """Scale values do they are between 0 and 1
+    in a DataFrame"""
     nvalues = []
     for i, unit in enumerate(values):
         nvalues.insert(i, unit / values.max())
@@ -39,6 +40,8 @@ def normalize(values: DataFrame) -> DataFrame:
 
 
 def normalize_list(values: list) -> list:
+    """Scale values do they are between 0 and 1
+    in a list"""
     nvalues = []
     for i, unit in enumerate(values):
         nvalues.insert(i, unit / max(values))
