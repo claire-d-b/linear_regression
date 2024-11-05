@@ -1,4 +1,4 @@
-from give_price import load, get_values
+from utils import load, get_values
 from train_model import train_model
 from matplotlib.pyplot import savefig, tight_layout, subplots
 

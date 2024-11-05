@@ -8,7 +8,6 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
     # y = w * x + b
     mse = 0.0
     m = len(mileage)
-    theta_0 = (price[1] - price[0]) / (mileage[1] - mileage[0])
 
     for mileage_unit, price_unit in zip(mileage, price):
 
