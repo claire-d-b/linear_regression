@@ -66,7 +66,7 @@ def main():
                               edgecolor='none')
     fig.colorbar(surface, ax=ax, shrink=0.5, aspect=5)
     # Color bar to show the scale of error
-    title("3D surface plotfor Squared Error")
+    title("3D surface plot for Squared Error")
     ax.set_xlabel("mileage")
     ax.set_ylabel("price")
     ax.set_zlabel("cost")
