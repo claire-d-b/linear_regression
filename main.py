@@ -1,7 +1,8 @@
 from utils import load, get_values
 from train_model import train_model
-from numpy import meshgrid, zeros_like, mean, linspace
-from matplotlib.pyplot import savefig, tight_layout, subplots, contourf, colorbar, title, xlabel, ylabel, plot
+from numpy import meshgrid, zeros_like, mean
+from matplotlib.pyplot import savefig, tight_layout, subplots, \
+                              title, xlabel, ylabel
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
 
     for i, unit in enumerate(lhs):
         pred.insert(i, unit * theta_1 + theta_0)
-    
+
     # Create a grid of a and b values
     A, B = meshgrid(lhs, rhs)
 
@@ -39,7 +40,8 @@ def main():
     for i in range(A.shape[0]):
         for j in range(A.shape[1]):
             predicted_y = A[i, j] * theta_1 + theta_0  # Predicted function
-            squared_error[i, j] = mean((predicted_y - B[i, j]) ** 2)  # Mean squared error
+            squared_error[i, j] = mean((predicted_y - B[i, j]) ** 2)
+            # Mean squared error
 
     fig, ax = subplots()
 
@@ -48,20 +50,19 @@ def main():
 
     tight_layout()
     savefig('output')
-    minimum = min(value for row in squared_error for value in row)
-    maximum = max(value for row in squared_error for value in row)
 
-    levels = linspace(minimum, maximum, it)  # 20 levels from min to max of Z
-    
     fig, ax = subplots()
     # 111: These are subplot grid parameters encoded as a single integer.
-    # For example, "111" means "1x1 grid, first subplot" and "234" means "2x3 grid, 4th subplot".
+    # For example, "111" means "1x1 grid, first subplot" and "234" means
+    # "2x3 grid, 4th subplot".
     # Alternative form for add_subplot(111) is add_subplot(1, 1, 1).
 
     ax = fig.add_subplot(111, projection='3d')
 
-    surface = ax.plot_surface(A, B, squared_error, cmap='viridis', edgecolor='none')
-    cbar = fig.colorbar(surface, ax=ax, shrink=0.5, aspect=5)  # Color bar to show the scale of error
+    surface = ax.plot_surface(A, B, squared_error, cmap='viridis',
+                              edgecolor='none')
+    fig.colorbar(surface, ax=ax, shrink=0.5, aspect=5)
+    # Color bar to show the scale of error
     title("Contour Plot of Squared Error")
     xlabel("Slope (a)")
     ylabel("Intercept (b)")
