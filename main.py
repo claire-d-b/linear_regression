@@ -2,7 +2,8 @@ from utils import load, get_values
 from train_model import train_model
 from numpy import meshgrid, zeros_like, mean
 from matplotlib.pyplot import savefig, tight_layout, subplots, \
-                              title, xlabel, ylabel
+                              title, xlabel, ylabel, ticklabel_format, \
+                              figure
 
 
 def main():
@@ -27,6 +28,8 @@ def main():
     # print("theta__1", theta_1)
 
     print("After training: ", theta_0 + theta_1 * float(mileage))
+    print("theta_0 (y-interceipt) is: ", theta_0)
+    print("theta_1 (slope) is: ", theta_1)
 
     for i, unit in enumerate(lhs):
         pred.insert(i, unit * theta_1 + theta_0)
@@ -49,14 +52,14 @@ def main():
     ax.scatter(lhs, rhs)
 
     tight_layout()
-    savefig('output')
+    savefig("output")
 
     fig, ax = subplots()
     # 111: These are subplot grid parameters encoded as a single integer.
     # For example, "111" means "1x1 grid, first subplot" and "234" means
     # "2x3 grid, 4th subplot".
     # Alternative form for add_subplot(111) is add_subplot(1, 1, 1).
-
+    fig = figure(figsize=(10, 8))
     ax = fig.add_subplot(111, projection='3d')
 
     surface = ax.plot_surface(A, B, squared_error, cmap='viridis',
@@ -64,8 +67,9 @@ def main():
     fig.colorbar(surface, ax=ax, shrink=0.5, aspect=5)
     # Color bar to show the scale of error
     title("Contour Plot of Squared Error")
-    xlabel("Slope (a)")
-    ylabel("Intercept (b)")
+    ax.set_xlabel('mileage')
+    ax.set_ylabel('price')
+    ax.set_zlabel('slope')
     savefig("cost")
 
 
