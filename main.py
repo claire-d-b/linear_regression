@@ -69,7 +69,7 @@ def main():
     title("3D surface plotfor Squared Error")
     ax.set_xlabel("mileage")
     ax.set_ylabel("price")
-    ax.set_zlabel("slope")
+    ax.set_zlabel("cost")
     savefig("cost")
 
 
