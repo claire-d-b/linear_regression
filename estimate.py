@@ -3,6 +3,7 @@ from matplotlib.pyplot import savefig, tight_layout, subplots
 
 
 def main():
+    """Program that estimates the price with theta_0 = 0 and theta_1 = 0"""
     lhs, rhs = get_lists_from_dataframe("data.csv", "km", "price")
 
     theta_0 = 0

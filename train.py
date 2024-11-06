@@ -4,6 +4,7 @@ from matplotlib.pyplot import savefig, tight_layout, subplots
 
 
 def main():
+    """Program that trains the model with 1000 iterations and a learning rate of 0.01"""
     lhs, rhs = get_lists_from_dataframe("data.csv", "km", "price")
 
     theta_0 = 0
