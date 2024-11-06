@@ -1,6 +1,14 @@
 from pandas import DataFrame, read_csv
 
 
+def get_lists_from_dataframe(df_name: str, keyword_lhs: str,
+                             keyword_rhs: str) -> tuple:
+    df = load(df_name)
+    lhs = get_values(df, keyword_lhs)
+    rhs = get_values(df, keyword_rhs)
+    return lhs, rhs
+
+
 def load(path: str) -> DataFrame:
     """Function that opens a file and display inner data in the shape
     of a datatable"""

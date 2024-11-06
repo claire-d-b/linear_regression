@@ -1,15 +1,12 @@
-from utils import load, get_values
-from train_model import train_model
+from utils import get_lists_from_dataframe
+from linear_regression import train_model
 from numpy import meshgrid, zeros_like, mean
-from matplotlib.pyplot import savefig, tight_layout, subplots, \
-                              title, xlabel, ylabel, ticklabel_format, \
-                              figure
+from matplotlib.pyplot import savefig, subplots, \
+                              title, figure
 
 
 def main():
-    df = load('data.csv')
-    lhs = get_values(df, "km")
-    rhs = get_values(df, "price")
+    lhs, rhs = get_lists_from_dataframe("data.csv", "km", "price")
 
     theta_0 = 0
     theta_1 = 0
@@ -19,20 +16,11 @@ def main():
     print("Please enter a mileage:")
     mileage = input()
 
-    print("Before training: ", theta_1 + theta_0 * float(mileage))
-
-    pred = []
-
     theta_1, theta_0 = train_model(lhs, rhs, it, learning_rate)
-    # print("theta__0", theta_0)
-    # print("theta__1", theta_1)
 
-    print("After training: ", theta_0 + theta_1 * float(mileage))
-    print("theta_0 (y-interceipt) is: ", theta_0)
-    print("theta_1 (slope) is: ", theta_1)
-
-    for i, unit in enumerate(lhs):
-        pred.insert(i, unit * theta_1 + theta_0)
+    print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
+    # print("theta_0 (y-interceipt) is: ", theta_0)
+    # print("theta_1 (slope) is: ", theta_1)
 
     # Create a grid of a and b values
     A, B = meshgrid(lhs, rhs)
@@ -45,14 +33,6 @@ def main():
             predicted_y = A[i, j] * theta_1 + theta_0  # Predicted function
             squared_error[i, j] = mean((predicted_y - B[i, j]) ** 2)
             # Mean squared error
-
-    fig, ax = subplots()
-
-    ax.plot(lhs, pred)
-    ax.scatter(lhs, rhs)
-
-    tight_layout()
-    savefig("output")
 
     fig, ax = subplots()
     # 111: These are subplot grid parameters encoded as a single integer.
