@@ -6,7 +6,8 @@ from matplotlib.pyplot import savefig, subplots, \
 
 
 def main():
-    """Program that builds a 3D shape figure to show the cost function / mean squared error"""
+    """Program that builds a 3D shape figure to show the cost function
+    / mean squared error"""
     lhs, rhs = get_lists_from_dataframe("data.csv", "km", "price")
 
     theta_0 = 0
