@@ -3,10 +3,18 @@ from pandas import DataFrame, read_csv
 
 def get_lists_from_dataframe(df_name: str, keyword_lhs: str,
                              keyword_rhs: str) -> tuple:
-    df = load(df_name)
-    lhs = get_values(df, keyword_lhs)
-    rhs = get_values(df, keyword_rhs)
-    return lhs, rhs
+    try:
+        df = load(df_name)
+        lhs = get_values(df, keyword_lhs)
+        rhs = get_values(df, keyword_rhs)
+        len(lhs) == len(rhs)
+        for i, (lhs_unit, rhs_unit) in enumerate(zip(lhs, rhs)):
+            if lhs_unit != lhs_unit or rhs_unit != rhs_unit:
+                raise AssertionError("Incorrect data format")
+    except Exception:
+        raise AssertionError("Incorrect data format")
+    else:
+        return lhs, rhs
 
 
 def load(path: str) -> DataFrame:
