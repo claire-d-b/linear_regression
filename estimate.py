@@ -1,4 +1,4 @@
-from utils import get_lists_from_dataframe
+from utils import get_lists_from_dataframe, open_thetas_file
 from matplotlib.pyplot import savefig, tight_layout, subplots
 
 
@@ -12,7 +12,9 @@ def main():
     print("Please enter a mileage:")
     mileage = input()
 
-    print("Estimated price is", int(theta_1 + theta_0 * float(mileage)))
+    theta_0, theta_1 = open_thetas_file("thetas.txt")
+
+    print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
 
     pred = []
     # print("theta_0 (y-interceipt) is: ", theta_0)

@@ -1,6 +1,19 @@
 from pandas import DataFrame, read_csv
 
 
+def open_thetas_file(name: str) -> tuple:
+    theta_0 = 0
+    theta_1 = 0
+    try:
+        f = open("thetas.txt", "r")
+        values = f.read().split(",")
+        theta_1 = float(values[1])
+        theta_0 = float(values[0])
+    except Exception:
+        raise AssertionError("Unreadable theta values")
+    finally:
+        return theta_0, theta_1
+
 def get_lists_from_dataframe(df_name: str, keyword_lhs: str,
                              keyword_rhs: str) -> tuple:
     try:

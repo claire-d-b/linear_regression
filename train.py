@@ -12,14 +12,15 @@ def main():
     theta_1 = 0
 
     learning_rate = 0.01
-    print("Please enter a mileage:")
-    mileage = input()
 
     pred = []
 
     theta_1, theta_0 = train_model(lhs, rhs, learning_rate)
 
-    print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
+    f = open("thetas.txt", "w")
+    f.write(f"{theta_0}, {theta_1}")
+    f.close()
+
     # print("theta_0 (y-interceipt) is: ", theta_0)
     # print("theta_1 (slope) is: ", theta_1)
 

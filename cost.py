@@ -1,4 +1,4 @@
-from utils import get_lists_from_dataframe
+from utils import get_lists_from_dataframe, open_thetas_file
 from linear_regression import train_model
 from numpy import meshgrid, zeros_like, mean
 from matplotlib.pyplot import savefig, show, \
@@ -14,12 +14,8 @@ def main():
     theta_1 = 0
 
     learning_rate = 0.01
-    print("Please enter a mileage:")
-    mileage = input()
 
-    theta_1, theta_0 = train_model(lhs, rhs, learning_rate)
-
-    print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
+    theta_0, theta_1 = open_thetas_file("thetas.txt")
     # print("theta_0 (y-interceipt) is: ", theta_0)
     # print("theta_1 (slope) is: ", theta_1)
 
