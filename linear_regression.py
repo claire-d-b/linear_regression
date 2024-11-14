@@ -67,8 +67,8 @@ def train_model(lhs: DataFrame, rhs: DataFrame,
     price = list(float(x) for x in rhs)
 
     theta_0, theta_1, mse = get_affine_function(mileage, price,
-                                                    theta_0, theta_1,
-                                                    learning_rate)
+                                                theta_0, theta_1,
+                                                learning_rate)
 
     if mse < minimum:
         minimum = mse
