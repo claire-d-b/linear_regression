@@ -70,9 +70,4 @@ def train_model(lhs: DataFrame, rhs: DataFrame,
                                                 theta_0, theta_1,
                                                 learning_rate)
 
-    if mse < minimum:
-        minimum = mse
-        w = theta_1
-        b = theta_0
-
-    return w, b
+    return theta_1, theta_0
