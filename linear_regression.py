@@ -4,7 +4,7 @@ from pandas import DataFrame
 def get_affine_function(mileage: list, price: list, theta_0: float,
                         theta_1: float, learning_rate: float) -> tuple:
     """Take all values from x-axis and y-axis lists and calculate the
-    mean square error smallest value, and corresponding thetas"""
+    mean square error for minimum square errors, update thetas"""
     # y = w * x + b
     mse = 0.0
     m = len(mileage)
@@ -27,7 +27,7 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
 def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
                   real_price: float, learning_rate: float) -> tuple:
     """Test with a slope value between -1 and 1, update y-interceipt value,
-    and take the smallest square error"""
+    take the smallest square error and return corresponding w and b"""
     limit = float("inf")
     w = 0.0
     b = 0.0
@@ -55,13 +55,9 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
 
 def train_model(lhs: DataFrame, rhs: DataFrame,
                 learning_rate: float) -> tuple:
-    """Take the smallest value of mean square error and
-    update thetas accordingly"""
+    """Get thetas that minimizes the mean square error"""
     theta_0 = 0.0
     theta_1 = 0.0
-    minimum = float("inf")
-    w = 0.0
-    b = 0.0
 
     mileage = list(float(x) for x in lhs)
     price = list(float(x) for x in rhs)
