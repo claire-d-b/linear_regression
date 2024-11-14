@@ -1,8 +1,8 @@
 from utils import get_lists_from_dataframe
 from linear_regression import train_model
 from numpy import meshgrid, zeros_like, mean
-from matplotlib.pyplot import savefig, subplots, \
-                              title, figure, show
+from matplotlib.pyplot import savefig, show, \
+                              title, figure
 
 
 def main():
