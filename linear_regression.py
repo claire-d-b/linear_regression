@@ -53,7 +53,7 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
     return b, w, limit
 
 
-def train_model(lhs: DataFrame, rhs: DataFrame, it: int,
+def train_model(lhs: DataFrame, rhs: DataFrame,
                 learning_rate: float) -> tuple:
     """Take the smallest value of mean square error and
     update thetas accordingly"""
@@ -66,14 +66,13 @@ def train_model(lhs: DataFrame, rhs: DataFrame, it: int,
     mileage = list(float(x) for x in lhs)
     price = list(float(x) for x in rhs)
 
-    for i in range(it):
-        theta_0, theta_1, mse = get_affine_function(mileage, price,
+    theta_0, theta_1, mse = get_affine_function(mileage, price,
                                                     theta_0, theta_1,
                                                     learning_rate)
 
-        if mse < minimum:
-            minimum = mse
-            w = theta_1
-            b = theta_0
+    if mse < minimum:
+        minimum = mse
+        w = theta_1
+        b = theta_0
 
     return w, b

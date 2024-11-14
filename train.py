@@ -11,14 +11,13 @@ def main():
     theta_0 = 0
     theta_1 = 0
 
-    it = 1000
     learning_rate = 0.01
     print("Please enter a mileage:")
     mileage = input()
 
     pred = []
 
-    theta_1, theta_0 = train_model(lhs, rhs, it, learning_rate)
+    theta_1, theta_0 = train_model(lhs, rhs, learning_rate)
 
     print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
     # print("theta_0 (y-interceipt) is: ", theta_0)
