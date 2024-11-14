@@ -17,7 +17,7 @@ def main():
 
     theta_1, theta_0 = train_model(lhs, rhs, learning_rate)
 
-    f = open("thetas.txt", "w")
+    f = open("thetas.csv", "w")
     f.write(f"{theta_0}, {theta_1}")
     f.close()
 

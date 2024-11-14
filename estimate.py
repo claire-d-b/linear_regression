@@ -12,7 +12,7 @@ def main():
     print("Please enter a mileage:")
     mileage = input()
 
-    theta_0, theta_1 = open_thetas_file("thetas.txt")
+    theta_0, theta_1 = open_thetas_file("thetas.csv")
 
     print("Estimated price is", int(theta_0 + theta_1 * float(mileage)))
 
@@ -29,7 +29,7 @@ def main():
     ax.scatter(lhs, rhs)
 
     tight_layout()
-    savefig("output_no_training")
+    savefig("output")
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ def main():
     theta_0 = 0
     theta_1 = 0
 
-    theta_0, theta_1 = open_thetas_file("thetas.txt")
+    theta_0, theta_1 = open_thetas_file("thetas.csv")
     # print("theta_0 (y-interceipt) is: ", theta_0)
     # print("theta_1 (slope) is: ", theta_1)
 

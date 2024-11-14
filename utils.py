@@ -5,7 +5,7 @@ def open_thetas_file(name: str) -> tuple:
     theta_0 = 0
     theta_1 = 0
     try:
-        f = open("thetas.txt", "r")
+        f = open("thetas.csv", "r")
         values = f.read().split(",")
         theta_1 = float(values[1])
         theta_0 = float(values[0])
