@@ -2,7 +2,7 @@ from utils import get_lists_from_dataframe
 from linear_regression import train_model
 from numpy import meshgrid, zeros_like, mean
 from matplotlib.pyplot import savefig, subplots, \
-                              title, figure
+                              title, figure, show
 
 
 def main():
@@ -36,7 +36,6 @@ def main():
             squared_error[i, j] = mean((predicted_y - B[i, j]) ** 2)
             # Mean squared error
 
-    fig, ax = subplots()
     # 111: These are subplot grid parameters encoded as a single integer.
     # For example, "111" means "1x1 grid, first subplot" and "234" means
     # "2x3 grid, 4th subplot".
@@ -53,6 +52,7 @@ def main():
     ax.set_ylabel("price")
     ax.set_zlabel("cost")
     savefig("cost")
+    show()
 
 
 if __name__ == "__main__":
