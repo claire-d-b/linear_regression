@@ -14,6 +14,7 @@ def open_thetas_file(name: str) -> tuple:
     finally:
         return theta_0, theta_1
 
+
 def get_lists_from_dataframe(df_name: str, keyword_lhs: str,
                              keyword_rhs: str) -> tuple:
     try:
