@@ -13,7 +13,7 @@ alias norminette=flake8
 
 deactivate
 
-There are 3 programs here:
+# There are 3 programs here:
 
 - estimate.py gives a predicted price for a given mileage, based on computed theta_0 and theta_1. Thetas to be used are stored in a csv file - thetas.csv. If the file does not exist, the predicted price will be 0.
 
