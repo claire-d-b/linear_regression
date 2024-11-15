@@ -1,13 +1,12 @@
 # Activate python virtual environment
 
-python -m venv venv
-source venv/bin/activate
+- python -m venv venv
+- source venv/bin/activate
 
 # Install required libraries
 
-pip install numpy matplotlib pandas
-pip install flake8
-alias norminette=flake8
+- pip install numpy matplotlib pandas flake8
+- alias norminette=flake8
 
 # Delete python environment
 
