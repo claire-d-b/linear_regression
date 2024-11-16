@@ -1,6 +1,7 @@
 from utils import get_lists_from_dataframe
 from linear_regression import train_model
-from matplotlib.pyplot import savefig, tight_layout, subplots
+from matplotlib.pyplot import savefig, tight_layout, subplots, \
+                              show
 
 
 def main():
@@ -34,6 +35,7 @@ def main():
 
     tight_layout()
     savefig("output_training")
+    show()
 
 
 if __name__ == "__main__":

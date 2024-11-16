@@ -5,14 +5,14 @@ def open_thetas_file(name: str) -> tuple:
     theta_0 = 0
     theta_1 = 0
     try:
-        f = open("thetas.csv", "r")
+        f = open(name, "r")
         values = f.read().split(",")
         theta_1 = float(values[1])
         theta_0 = float(values[0])
-    except Exception:
-        raise AssertionError("Unreadable theta values")
-    finally:
         return theta_0, theta_1
+    except Exception:
+        raise AssertionError("The model has not been trained yet. \
+Predicted value is 0.")
 
 
 def get_lists_from_dataframe(df_name: str, keyword_lhs: str,

@@ -1,4 +1,5 @@
 from pandas import DataFrame
+import random
 
 
 def get_affine_function(mileage: list, price: list, theta_0: float,
@@ -56,8 +57,10 @@ def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
 def train_model(lhs: DataFrame, rhs: DataFrame,
                 learning_rate: float) -> tuple:
     """Get thetas that minimizes the mean square error"""
-    theta_0 = 0.0
-    theta_1 = 0.0
+
+    # Generate a random floating-point number between -1 and 1
+    theta_0 = random.uniform(-0.01, 0.01)
+    theta_1 = random.uniform(-0.01, 0.01)
 
     mileage = list(float(x) for x in lhs)
     price = list(float(x) for x in rhs)
