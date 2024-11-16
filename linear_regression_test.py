@@ -59,7 +59,7 @@ def train_model(lhs: DataFrame, rhs: DataFrame,
                 learning_rate: float) -> tuple:
     """Get thetas that minimizes the mean square error"""
 
-    # Generate a random floating-point number between -1 and 1
+    # Generate a random floating-point number between -0.01 and 0.01
     theta_0 = random.uniform(-0.01, 0.01)
     theta_1 = random.uniform(-0.01, 0.01)
 
