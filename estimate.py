@@ -16,7 +16,7 @@ def main():
 
     if int(theta_0 + theta_1 * float(mileage)) > 0:
         print("Estimated price is", int(theta_0 + theta_1 *
-                float(mileage)))
+                                        float(mileage)))
     else:
         print("The car cannot be sold: its value is 0.")
 
