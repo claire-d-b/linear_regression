@@ -9,19 +9,21 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
     # y = w * x + b
     mse = 0.0
     m = len(mileage)
-
+    i = 0
     for mileage_unit, price_unit in zip(mileage, price):
-        b, w, se = minimize_cost(m, theta_0, theta_1, mileage_unit,
-                                 price_unit, learning_rate)
-        theta_0 += b
-        theta_1 += w
+        if i == 0:
+            b, w, se = minimize_cost(m, theta_0, theta_1, mileage_unit,
+                                     price_unit, learning_rate)
+            theta_0 += b
+            theta_1 += w
 
-        mse += se
+            mse += se
+        i += 1
     ret_mse = mse * 1 / (2 * m)
     theta_0 /= len(mileage)
     theta_1 /= len(mileage)
 
-    return theta_0, theta_1, ret_mse
+    return b, w, ret_mse
 
 
 def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,

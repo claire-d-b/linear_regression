@@ -1,4 +1,5 @@
 from utils import get_lists_from_dataframe
+# from linear_regression_test import train_model
 from linear_regression import train_model
 from matplotlib.pyplot import savefig, tight_layout, subplots, \
                               show
