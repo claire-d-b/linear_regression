@@ -26,8 +26,8 @@ def get_affine_function(mileage: list, price: list, theta_0: float,
 
 def minimize_cost(m: int, theta_0: float, theta_1: float, real_mileage: float,
                   real_price: float, learning_rate: float) -> tuple:
-    """Test with a slope value between -1 and 1, update y-interceipt value,
-    take the smallest square error and return corresponding w and b"""
+    """Test with a slope value between -0.01 and 0.01, update y-interceipt
+    value, take the smallest square error and return corresponding w and b"""
     limit = float("inf")
     w = 0.0
     b = 0.0
